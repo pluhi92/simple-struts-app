@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="userListForm"
+			type="com.cgi.web.form.UserListForm" />
+	</form-beans>
+
+	<action-mappings>
+		<action path="/userList"
+			type="com.cgi.web.action.UserListAction" name="userListForm">
+			<forward name="success"
+				path="/WEB-INF/views/userListView.jsp" />
+		</action>
+	</action-mappings>
+	
+	<action-mappings>
+		<action path="/orderedListByNicknameAsc"
+			type="com.cgi.web.action.OrderedByNicknameAscAction" name="userListForm">
+			<forward name="success"
+				path="/WEB-INF/views/orderedListByNicknameAsc.jsp" />
+		</action>
+	</action-mappings>
+	
+	<action-mappings>
+		<action path="/orderedListByNicknameDesc"
+			type="com.cgi.web.action.OrderedByNicknameDescAction" name="userListForm">
+			<forward name="success"
+				path="/WEB-INF/views/orderedListByNicknameDesc.jsp" />
+		</action>
+	</action-mappings>
+	
+	<action-mappings>
+		<action path="/orderedListByIdDesc"
+			type="com.cgi.web.action.OrderedByIdDescAction" name="userListForm">
+			<forward name="success"
+				path="/WEB-INF/views/orderedListByIdDesc.jsp" />
+		</action>
+	</action-mappings>
+	
+	<action-mappings>
+		<action path="/orderedListByFirstNameAsc"
+			type="com.cgi.web.action.OrderedByFirstNameAscAction" name="userListForm">
+			<forward name="success"
+				path="/WEB-INF/views/orderedListByFirstNameAsc.jsp" />
+		</action>
+	</action-mappings>
+	
+	<action-mappings>
+		<action path="/orderedListByFirstNameDesc"
+			type="com.cgi.web.action.OrderedByFirstNameDescAction" name="userListForm">
+			<forward name="success"
+				path="/WEB-INF/views/orderedListByFirstNameDesc.jsp" />
+		</action>
+	</action-mappings>
+	
+	<action-mappings>
+		<action path="/orderedListByAgeAsc"
+			type="com.cgi.web.action.OrderedByAgeAscAction" name="userListForm">
+			<forward name="success"
+				path="/WEB-INF/views/orderedListByAgeAsc.jsp" />
+		</action>
+	</action-mappings>
+	
+	<action-mappings>
+		<action path="/orderedListByAgeDesc"
+			type="com.cgi.web.action.OrderedByAgeDescAction" name="userListForm">
+			<forward name="success"
+				path="/WEB-INF/views/orderedListByAgeDesc.jsp" />
+		</action>
+	</action-mappings>
+	
+	<action-mappings>
+		<action path="/orderedListByEmailAsc"
+			type="com.cgi.web.action.OrderedByEmailAscAction" name="userListForm">
+			<forward name="success"
+				path="/WEB-INF/views/orderedListByEmailAsc.jsp" />
+		</action>
+	</action-mappings>
+	
+	<action-mappings>
+		<action path="/orderedListByEmailDesc"
+			type="com.cgi.web.action.OrderedByEmailDescAction" name="userListForm">
+			<forward name="success"
+				path="/WEB-INF/views/orderedListByEmailDesc.jsp" />
+		</action>
+	</action-mappings>
+
+	<message-resources parameter="" null="true"></message-resources>
+
+
+</struts-config>
+

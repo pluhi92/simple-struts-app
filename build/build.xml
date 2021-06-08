@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ========================================== 
+# Ant script to build simplestrutsapp module files. 
+#
+# Author: Tamas Pluhar
+# Created Date: 15.05.2021
+#
+=============================================== -->
+<project name="SimpleStrutsApp" default="build-simplestrutsapp" >
+	<property file="build.properties"/>
+
+	<property name="work.dir" value="${basedir}/../work"/>
+	<property name="output.dir" value="${basedir}/../output"/>
+	<property name="java.customisation.src.dir" value="${basedir}/../src/main/java"/>
+
+	<path id="simplestrutsapp.classpath" >
+		<fileset dir="${basedir}/../lib">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="${basedir}/../src/main/webapp/WEB-INF/lib">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<mkdir dir="${work.dir}"/>
+		<mkdir dir="${output.dir}"/>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: clean-up                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clean-up">
+		<delete dir="${work.dir}"/>
+		<delete dir="${output.dir}"/>
+	</target>
+
+
+	<target name="print-version">
+		<echo>Java/JVM version: ${ant.java.version}</echo>
+		<echo>Java/JVM detail version: ${java.version}</echo>
+	</target>
+
+
+	<!-- ================================= 
+          target: build-simplestrutsapp            
+         ================================= -->
+	<target name="build-simplestrutsapp" description="build simplestrutsapp jar" depends="clean-up,init">
+
+		<mkdir dir="${work.dir}/simplestrutsapp"/>
+
+		<mkdir dir="${work.dir}/lib"/>
+
+		<copy todir="${work.dir}/lib">
+
+			<fileset dir="${basedir}/../lib">
+				<include name="**/jackson*.jar" />
+			</fileset>
+
+		</copy>
+
+		<javac srcdir="${java.customisation.src.dir}" destdir="${work.dir}/simplestrutsapp" fork="yes" 
+			source="1.7" nowarn="true"
+			classpathref="simplestrutsapp.classpath"
+			executable="${javac.executable}"
+			debug="true" encoding="UTF-8">
+			<include name="**/*.java"/>
+			<include name="**/*.properties"/>
+		</javac>
+
+		<tstamp>
+			<format property="buildtime" pattern="${manifest.tspattern}" />
+		</tstamp>
+
+		<war destfile="${output.dir}/SimpleStrutsApp.war" webxml="${basedir}/../src/main/webapp/WEB-INF/web.xml" >
+			<manifest>
+				<attribute name="Implementation-Vendor" value="${manifest.vendor}" />
+				<attribute name="Implementation-Version" value="${manifest.version}" />
+				<attribute name="Built-On" value="${jar.buildtime}" />
+			</manifest>
+			<fileset dir="${basedir}/../src/main/webapp" includes="*.jsp"/>
+			<classes dir="${work.dir}/simplestrutsapp" />
+			<lib dir="${work.dir}/lib"/>
+			<webinf dir="${basedir}/../src/main/webapp/WEB-INF">
+			</webinf>
+		</war>
+
+		<copy file="${output.dir}/SimpleStrutsApp.war" todir="${work.dir}/ear" />
+	</target>
+
+
+	<!--Installer for building simplestrutsapp.ear -->
+	<target name="simplestrutsapp-ear" depends="build-simplestrutsapp">
+		<echo />
+		<echo />
+		<echo>      Packaging simplestrutsapp ear file... </echo>
+		<echo>      ============================================= </echo>
+
+		<!-- Create required directories -->
+		<mkdir dir="${work.dir}/ear" />
+		<mkdir dir="${work.dir}/ear/APP-INF"/>
+
+		<!-- Create EAR -->
+		<ear destfile="${output.dir}/simplestrutsapp.ear" 
+			appxml="${basedir}/../META-INF/application.xml" 
+			manifest="${basedir}/../META-INF/MANIFEST.MF">
+			<fileset dir="${work.dir}/ear" includes="*.*"/>
+			<metainf dir="${basedir}/../META-INF" includes="*.xml"/>
+		</ear>
+		
+		<!--delete file="${output.dir}/simplestrutsapp.war"></delete-->
+
+	</target>
+
+</project>
+
+
