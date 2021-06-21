@@ -7,7 +7,7 @@
   
   <body>
   
-     <h2>Welcome to my example STRUTS page</h2>
+     <h2>Welcome!</h2>
       
      <ul>
         <li><a href="userList.do">User List</a>
