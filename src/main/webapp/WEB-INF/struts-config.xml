@@ -8,12 +8,12 @@
 
 	<form-beans>
 		<form-bean name="userListForm"
-			type="com.cgi.web.form.UserListForm" />
+			type="com.pluhi.web.form.UserListForm" />
 	</form-beans>
 
 	<action-mappings>
 		<action path="/userList"
-			type="com.cgi.web.action.UserListAction" name="userListForm">
+			type="com.pluhi.web.action.UserListAction" name="userListForm">
 			<forward name="success"
 				path="/WEB-INF/views/userListView.jsp" />
 		</action>
@@ -21,7 +21,7 @@
 	
 	<action-mappings>
 		<action path="/orderedListByNicknameAsc"
-			type="com.cgi.web.action.OrderedByNicknameAscAction" name="userListForm">
+			type="com.pluhi.web.action.nickname.OrderedByNicknameAscAction" name="userListForm">
 			<forward name="success"
 				path="/WEB-INF/views/orderedListByNicknameAsc.jsp" />
 		</action>
@@ -29,7 +29,7 @@
 	
 	<action-mappings>
 		<action path="/orderedListByNicknameDesc"
-			type="com.cgi.web.action.OrderedByNicknameDescAction" name="userListForm">
+			type="com.pluhi.web.action.nickname.OrderedByNicknameDescAction" name="userListForm">
 			<forward name="success"
 				path="/WEB-INF/views/orderedListByNicknameDesc.jsp" />
 		</action>
@@ -37,7 +37,7 @@
 	
 	<action-mappings>
 		<action path="/orderedListByIdDesc"
-			type="com.cgi.web.action.OrderedByIdDescAction" name="userListForm">
+			type="com.pluhi.web.action.id.OrderedByIdDescAction" name="userListForm">
 			<forward name="success"
 				path="/WEB-INF/views/orderedListByIdDesc.jsp" />
 		</action>
@@ -45,7 +45,7 @@
 	
 	<action-mappings>
 		<action path="/orderedListByFirstNameAsc"
-			type="com.cgi.web.action.OrderedByFirstNameAscAction" name="userListForm">
+			type="com.pluhi.web.action.firstname.OrderedByFirstNameAscAction" name="userListForm">
 			<forward name="success"
 				path="/WEB-INF/views/orderedListByFirstNameAsc.jsp" />
 		</action>
@@ -53,7 +53,7 @@
 	
 	<action-mappings>
 		<action path="/orderedListByFirstNameDesc"
-			type="com.cgi.web.action.OrderedByFirstNameDescAction" name="userListForm">
+			type="com.pluhi.web.action.firstname.OrderedByFirstNameDescAction" name="userListForm">
 			<forward name="success"
 				path="/WEB-INF/views/orderedListByFirstNameDesc.jsp" />
 		</action>
@@ -61,7 +61,7 @@
 	
 	<action-mappings>
 		<action path="/orderedListByAgeAsc"
-			type="com.cgi.web.action.OrderedByAgeAscAction" name="userListForm">
+			type="com.pluhi.web.action.age.OrderedByAgeAscAction" name="userListForm">
 			<forward name="success"
 				path="/WEB-INF/views/orderedListByAgeAsc.jsp" />
 		</action>
@@ -69,7 +69,7 @@
 	
 	<action-mappings>
 		<action path="/orderedListByAgeDesc"
-			type="com.cgi.web.action.OrderedByAgeDescAction" name="userListForm">
+			type="com.pluhi.web.action.age.OrderedByAgeDescAction" name="userListForm">
 			<forward name="success"
 				path="/WEB-INF/views/orderedListByAgeDesc.jsp" />
 		</action>
@@ -77,7 +77,7 @@
 	
 	<action-mappings>
 		<action path="/orderedListByEmailAsc"
-			type="com.cgi.web.action.OrderedByEmailAscAction" name="userListForm">
+			type="com.pluhi.web.action.email.OrderedByEmailAscAction" name="userListForm">
 			<forward name="success"
 				path="/WEB-INF/views/orderedListByEmailAsc.jsp" />
 		</action>
@@ -85,7 +85,7 @@
 	
 	<action-mappings>
 		<action path="/orderedListByEmailDesc"
-			type="com.cgi.web.action.OrderedByEmailDescAction" name="userListForm">
+			type="com.pluhi.web.action.email.OrderedByEmailDescAction" name="userListForm">
 			<forward name="success"
 				path="/WEB-INF/views/orderedListByEmailDesc.jsp" />
 		</action>
